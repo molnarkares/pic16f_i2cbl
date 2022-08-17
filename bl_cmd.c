@@ -80,7 +80,7 @@ void I2C_StatusCallback(I2C_PERIPHERAL_DRIVER_STATUS i2cBusState, uint8_t i2cDat
     static uint8_t i2cBuffer[64] = {0};
     static uint8_t bufferIdx = 0;
     static uint8_t command = 0;
-    static uint8_t wrType = SLAVE_DATA_ADDRESS;
+    static uint8_t wrType = PERIPH_DATA_ADDRESS;
     static bool isDataProcessing = false;
     static bool isDeviceAddressed = false;
 
@@ -90,7 +90,7 @@ void I2C_StatusCallback(I2C_PERIPHERAL_DRIVER_STATUS i2cBusState, uint8_t i2cDat
             break;
 
         case I2C_PERIPHERAL_WRITE_ADDRESS:
-            wrType = SLAVE_DATA_ADDRESS;
+            wrType = PERIPH_DATA_ADDRESS;
             isDeviceAddressed = true;
             break;
 
@@ -98,7 +98,7 @@ void I2C_StatusCallback(I2C_PERIPHERAL_DRIVER_STATUS i2cBusState, uint8_t i2cDat
         case I2C_PERIPHERAL_WRITE_DATA:
 
             switch (wrType) {
-                case SLAVE_DATA_ADDRESS: {
+                case PERIPH_DATA_ADDRESS: {
                     command = i2cData;
                     bufferIdx = 0;
                     for (uint8_t memset_it = 0; memset_it < sizeof(i2cBuffer); memset_it++) {
@@ -108,7 +108,7 @@ void I2C_StatusCallback(I2C_PERIPHERAL_DRIVER_STATUS i2cBusState, uint8_t i2cDat
                 } break;
 
 
-                case SLAVE_NORMAL_DATA:
+                case PERIPH_NORMAL_DATA:
                 default:
                     if (bufferIdx < sizeof(i2cBuffer)) {
                         i2cBuffer[bufferIdx++] = i2cData;
@@ -117,7 +117,7 @@ void I2C_StatusCallback(I2C_PERIPHERAL_DRIVER_STATUS i2cBusState, uint8_t i2cDat
                     break;
             }
 
-            wrType = SLAVE_NORMAL_DATA;
+            wrType = PERIPH_NORMAL_DATA;
             break;
 
         case I2C_PERIPHERAL_READ_ADDRESS:
@@ -128,7 +128,7 @@ void I2C_StatusCallback(I2C_PERIPHERAL_DRIVER_STATUS i2cBusState, uint8_t i2cDat
             if (isDeviceAddressed && isDataProcessing) {
                 processCommand(command, i2cBuffer);
             }
-            wrType = SLAVE_DATA_ADDRESS;
+            wrType = PERIPH_DATA_ADDRESS;
             isDataProcessing = false;
             isDeviceAddressed = false;
             break;

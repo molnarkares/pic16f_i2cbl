@@ -35,6 +35,7 @@ in the Makefile might require adjustment to rebuild it on other host OSes.
 
 The boot loader can be adjusted to support other MCU from the PIC16 range.
 It may include tailoring the macro definitions in _memory.h_ and _bl.h_ files.
+The application specific initialization can be placed to _appinit.c_
 
 # Command set
 
@@ -69,7 +70,6 @@ It may include tailoring the macro definitions in _memory.h_ and _bl.h_ files.
 |Hex code| 0x21                                                                                                                                                                                      |
 | Parameters| 16 bits CRC of the application data                                                                                                                                                       |
 | Description| Calculates CRC of the programmed application and compares<br/> it to the value given in the command parameter.<br/>If the values match it marks the application valid and executes reset. |
-
 
 # License
 

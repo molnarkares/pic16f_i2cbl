@@ -41,9 +41,9 @@ typedef enum {
 } I2C_PERIPHERAL_DRIVER_STATUS;
 
 typedef enum {
-    SLAVE_NORMAL_DATA,
-    SLAVE_DATA_ADDRESS,
-} SLAVE_WRITE_DATA_TYPE;
+  PERIPH_NORMAL_DATA,
+  PERIPH_DATA_ADDRESS,
+} PERIPH_WRITE_DATA_TYPE;
 
 void I2C_Initialize(void);
 void I2C_ISR(void);
