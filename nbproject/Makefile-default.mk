@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=pin_manager.c mcc.c main.c crc16.c reloc.c tmr6.c memory.c i2c.c bl_cmd.c reset.c bl_status.c shadow_page.c
+SOURCEFILES_QUOTED_IF_SPACED=pin_manager.c mcc.c main.c crc16.c reloc.c tmr6.c memory.c i2c.c bl_cmd.c reset.c bl_status.c shadow_page.c appinit.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/pin_manager.p1 ${OBJECTDIR}/mcc.p1 ${OBJECTDIR}/main.p1 ${OBJECTDIR}/crc16.p1 ${OBJECTDIR}/reloc.p1 ${OBJECTDIR}/tmr6.p1 ${OBJECTDIR}/memory.p1 ${OBJECTDIR}/i2c.p1 ${OBJECTDIR}/bl_cmd.p1 ${OBJECTDIR}/reset.p1 ${OBJECTDIR}/bl_status.p1 ${OBJECTDIR}/shadow_page.p1
-POSSIBLE_DEPFILES=${OBJECTDIR}/pin_manager.p1.d ${OBJECTDIR}/mcc.p1.d ${OBJECTDIR}/main.p1.d ${OBJECTDIR}/crc16.p1.d ${OBJECTDIR}/reloc.p1.d ${OBJECTDIR}/tmr6.p1.d ${OBJECTDIR}/memory.p1.d ${OBJECTDIR}/i2c.p1.d ${OBJECTDIR}/bl_cmd.p1.d ${OBJECTDIR}/reset.p1.d ${OBJECTDIR}/bl_status.p1.d ${OBJECTDIR}/shadow_page.p1.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/pin_manager.p1 ${OBJECTDIR}/mcc.p1 ${OBJECTDIR}/main.p1 ${OBJECTDIR}/crc16.p1 ${OBJECTDIR}/reloc.p1 ${OBJECTDIR}/tmr6.p1 ${OBJECTDIR}/memory.p1 ${OBJECTDIR}/i2c.p1 ${OBJECTDIR}/bl_cmd.p1 ${OBJECTDIR}/reset.p1 ${OBJECTDIR}/bl_status.p1 ${OBJECTDIR}/shadow_page.p1 ${OBJECTDIR}/appinit.p1
+POSSIBLE_DEPFILES=${OBJECTDIR}/pin_manager.p1.d ${OBJECTDIR}/mcc.p1.d ${OBJECTDIR}/main.p1.d ${OBJECTDIR}/crc16.p1.d ${OBJECTDIR}/reloc.p1.d ${OBJECTDIR}/tmr6.p1.d ${OBJECTDIR}/memory.p1.d ${OBJECTDIR}/i2c.p1.d ${OBJECTDIR}/bl_cmd.p1.d ${OBJECTDIR}/reset.p1.d ${OBJECTDIR}/bl_status.p1.d ${OBJECTDIR}/shadow_page.p1.d ${OBJECTDIR}/appinit.p1.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/pin_manager.p1 ${OBJECTDIR}/mcc.p1 ${OBJECTDIR}/main.p1 ${OBJECTDIR}/crc16.p1 ${OBJECTDIR}/reloc.p1 ${OBJECTDIR}/tmr6.p1 ${OBJECTDIR}/memory.p1 ${OBJECTDIR}/i2c.p1 ${OBJECTDIR}/bl_cmd.p1 ${OBJECTDIR}/reset.p1 ${OBJECTDIR}/bl_status.p1 ${OBJECTDIR}/shadow_page.p1
+OBJECTFILES=${OBJECTDIR}/pin_manager.p1 ${OBJECTDIR}/mcc.p1 ${OBJECTDIR}/main.p1 ${OBJECTDIR}/crc16.p1 ${OBJECTDIR}/reloc.p1 ${OBJECTDIR}/tmr6.p1 ${OBJECTDIR}/memory.p1 ${OBJECTDIR}/i2c.p1 ${OBJECTDIR}/bl_cmd.p1 ${OBJECTDIR}/reset.p1 ${OBJECTDIR}/bl_status.p1 ${OBJECTDIR}/shadow_page.p1 ${OBJECTDIR}/appinit.p1
 
 # Source Files
-SOURCEFILES=pin_manager.c mcc.c main.c crc16.c reloc.c tmr6.c memory.c i2c.c bl_cmd.c reset.c bl_status.c shadow_page.c
+SOURCEFILES=pin_manager.c mcc.c main.c crc16.c reloc.c tmr6.c memory.c i2c.c bl_cmd.c reset.c bl_status.c shadow_page.c appinit.c
 
 
 
@@ -125,7 +125,16 @@ ${OBJECTDIR}/crc16.p1: crc16.c  nbproject/Makefile-${CND_CONF}.mk
 	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -mrom=0-3FF -Os -flocal -maddrqual=require -mwarn=-3 -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,+hex,+file  -ginhx032 -Wl,--data-init -mkeep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mdownload -mno-stackcall $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/crc16.p1 crc16.c 
 	@-${MV} ${OBJECTDIR}/crc16.d ${OBJECTDIR}/crc16.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/crc16.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
+
+${OBJECTDIR}/appinit.p1: appinit.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}"
+	@${RM} ${OBJECTDIR}/appinit.p1.d
+	@${RM} ${OBJECTDIR}/appinit.p1
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -mrom=0-3FF -Os -flocal -maddrqual=require -mwarn=-3 -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,+hex,+file  -ginhx032 -Wl,--data-init -mkeep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mdownload -mno-stackcall $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/appinit.p1 appinit.c
+	@-${MV} ${OBJECTDIR}/appinit.d ${OBJECTDIR}/appinit.p1.d
+	@${FIXDEPS} ${OBJECTDIR}/appinit.p1.d $(SILENT) -rsi ${MP_CC_DIR}../
+
+
 ${OBJECTDIR}/reloc.p1: reloc.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/reloc.p1.d 
@@ -222,7 +231,16 @@ ${OBJECTDIR}/crc16.p1: crc16.c  nbproject/Makefile-${CND_CONF}.mk
 	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -mrom=0-3FF -Os -flocal -maddrqual=require -mwarn=-3 -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,+hex,+file  -ginhx032 -Wl,--data-init -mkeep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mdownload -mno-stackcall $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/crc16.p1 crc16.c 
 	@-${MV} ${OBJECTDIR}/crc16.d ${OBJECTDIR}/crc16.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/crc16.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
+
+${OBJECTDIR}/appinit.p1: appinit.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}"
+	@${RM} ${OBJECTDIR}/appinit.p1.d
+	@${RM} ${OBJECTDIR}/appinit.p1
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -mrom=0-3FF -Os -flocal -maddrqual=require -mwarn=-3 -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,+hex,+file  -ginhx032 -Wl,--data-init -mkeep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mdownload -mno-stackcall $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/appinit.p1 appinit.c
+	@-${MV} ${OBJECTDIR}/appinit.d ${OBJECTDIR}/appinit.p1.d
+	@${FIXDEPS} ${OBJECTDIR}/appinit.p1.d $(SILENT) -rsi ${MP_CC_DIR}../
+
+
 ${OBJECTDIR}/reloc.p1: reloc.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/reloc.p1.d 

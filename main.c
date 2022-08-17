@@ -15,7 +15,7 @@
 #include "mcc.h"
 #include "memory.h"
 #include "tmr6.h"
-
+#include "appinit.h"
 
 inline void startApp() {
     asm("goto "___mkstr(APP_START_ADDR));
@@ -25,17 +25,14 @@ int main(void) {
     INTERRUPT_GlobalInterruptDisable();
     // initialize the device
     SYSTEM_Initialize();
-    RC2_SetDigitalOutput();
-    RC2_SetLow();
-    HV_EN_SetLow();// High voltage disable
-
+    Application_Initialize();
 
     if (isBlRequested()) {// BL was requested from app
         setBlActive();
     }
 
     while (1) {
-        if (PIR1bits.SSP1IF == 1) {
+        if (PIR1bits.SSP1IF == 1) { //BL runs with interrupts disabled
             I2C_ISR();
         }
         if (!isBlActive() && TMR6_HasOverflowOccured()) {
