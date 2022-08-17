@@ -1,0 +1,7 @@
+nbproject/private/
+dist/
+build/
+.idea/
+*.hex
+*.mc3
+
